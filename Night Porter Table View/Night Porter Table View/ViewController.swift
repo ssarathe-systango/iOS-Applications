@@ -112,7 +112,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             currentTask = monthlyTask[indexPath.row]
         default:
             break
-    }
+        }
         
         //use the name property to set the value of the cell.
         cell.textLabel?.text = currentTask.name
@@ -135,6 +135,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
         let completeAction = UIContextualAction(style: .normal, title: "Complete") {(action: UIContextualAction, sourceView: UIView, actionPerformed:(Bool) -> Void) in
             
             // find the right object and set it to complete
