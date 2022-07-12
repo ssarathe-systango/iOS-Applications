@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var taskTF: UITextField!
     
-    // dark mode action
+    // Dark mode action
     @IBAction func toggleDarkMode(_ sender: Any) {
         let mySwitch = sender as! UISwitch
         if mySwitch.isOn {
@@ -22,14 +22,46 @@ class ViewController: UIViewController {
             view.backgroundColor = UIColor.white
         }
     }
-    // add button action
     
+    // Add button action
     @IBAction func addTasks(_ sender: Any) {
-//        let Text = taskTF.text
+//          let text = taskTF.text
+            let alert = UIAlertController(title: "Enter Task Name?", message: "", preferredStyle: .alert)
+            alert.addTextField {(textField) in
+            textField.placeholder = "Task"
+        }
         
+        let saveAction = UIAlertAction(title: "Add", style: .default) {
+            action in
+
+            let inputName = alert.textFields![0].text
+//          print(inputName ?? "")
+            let task = Task(name: inputName ?? "", type: .daily, completed: false, lastCompleted: nil)
+            self.dailyTask.append(task)
+            self.weeklyTask.append(task)
+            self.monthlyTask.append(task)
+            self.taskTableview.reloadData()
+        }
+        
+        let saveActionForNo = UIAlertAction(title: "Don't Add", style: .cancel) {
+            action in
+            print("cancel action called!")
+        }
+
+        alert.addAction(saveAction)
+        alert.addAction(saveActionForNo)
+        present(alert, animated: true, completion: nil)
+        
+//        let task = Task(name: text ?? "", type: .daily, completed: false, lastCompleted: nil)
+//        dailyTask.append(task)
+//        weeklyTask.append(task)
+//        monthlyTask.append(task)
+            
+//        let indexPath = IndexPath(row: dailyTask.count - 1, section: 0)
+//        taskTableview.reloadRows(at: [indexPath], with: .fade)
     }
     
-    //reset button action
+    // Reset button action
     @IBAction func resetList(_ sender: Any) {
         let confirm = UIAlertController(title: "Are you sure ?", message: "Really", preferredStyle: .alert)
         
@@ -54,7 +86,7 @@ class ViewController: UIViewController {
             action in
             print("That was close one!!!")
         }
-        //add actions
+        // Add actions to UIAlertController
         confirm.addAction(yesAction)
         confirm.addAction(noAction)
         
@@ -84,7 +116,7 @@ class ViewController: UIViewController {
     }
 }
 
-//Table view datasource methods
+// Table view datasource methods
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -118,7 +150,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.textLabel?.text = currentTask.name
         
-        // set the value of completed = true, then see output.
+        // Set the value of completed = true, then see output.
         if currentTask.completed {
             cell.textLabel?.textColor = UIColor.lightGray
             cell.accessoryType = .checkmark
@@ -126,16 +158,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textLabel?.textColor = UIColor.black
             cell.accessoryType = .none
         }
+        
         cell.backgroundColor = UIColor.clear
         return cell
     }
 
-//table view delegate methods
+// Table view delegate methods
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("You have selected \(indexPath.row) row in \(indexPath.section) section")
 }
 
-//swipe action
+// Swipe action
 func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     
     let completeAction = UIContextualAction(style: .normal, title: "Complete") {(action: UIContextualAction, sourceView: UIView, actionPerformed:(Bool) -> Void) in

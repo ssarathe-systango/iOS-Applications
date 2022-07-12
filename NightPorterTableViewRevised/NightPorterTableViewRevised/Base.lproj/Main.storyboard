@@ -54,19 +54,12 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add More Tasks" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E0e-3W-m47">
-                                <rect key="frame" x="82" y="44" width="131" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk9-3J-ayy">
-                                <rect key="frame" x="268" y="44" width="106" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk9-3J-ayy">
+                                <rect key="frame" x="288" y="44" width="106" height="31"/>
                                 <color key="backgroundColor" red="0.13174725700000001" green="0.12811663679999999" blue="0.30289488799999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Add Task"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add Task" cornerStyle="capsule"/>
                                 <connections>
                                     <action selector="addTasks:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tUc-Sv-a8H"/>
                                 </connections>
@@ -74,9 +67,13 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Rk9-3J-ayy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4pn-FB-otY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rk9-3J-ayy" secondAttribute="trailing" constant="20" id="SWn-5R-lDS"/>
+                            <constraint firstItem="Rk9-3J-ayy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="288" id="sGN-xJ-w9W"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="taskTF" destination="E0e-3W-m47" id="lpg-X5-cXG"/>
                         <outlet property="taskTableview" destination="tIR-Oh-NGj" id="Acb-Yb-uGv"/>
                     </connections>
                 </viewController>
