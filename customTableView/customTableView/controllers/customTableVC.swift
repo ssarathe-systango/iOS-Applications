@@ -9,6 +9,7 @@ import UIKit
 
 class CustomTableVC: UIViewController {
     
+    
     @IBOutlet weak var userListTableView: UITableView!
     
     @IBAction func goBack(_ sender: Any) {
@@ -48,7 +49,7 @@ extension CustomTableVC: UITableViewDataSource {
         //set accessory type
 //        myCell.accessoryType = .disclosureIndicator
         myCell.accessoryType = .detailDisclosureButton
-        myCell.detailTextLabel?.text = "This is something detail text"
+        myCell.detailTextLabel?.text = "This is something detail text This is something detail textThis is something detail textThis is something detail textThis is something detail text"
         return myCell
     }
     
@@ -64,7 +65,7 @@ extension CustomTableVC: UITableViewDataSource {
 // delegate methods
 extension CustomTableVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return tableView.estimatedRowHeight
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -72,6 +73,7 @@ extension CustomTableVC: UITableViewDelegate {
     }
 }
 
+// jump with navigation
 extension CustomTableVC {
     func jumpWithNavigation() {
         let tableVC = storyboard?.instantiateViewController(withIdentifier: "customTableVCNext") as! customTableVCNext

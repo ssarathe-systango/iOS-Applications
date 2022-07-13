@@ -116,6 +116,7 @@ class ViewController: UIViewController {
     }
 }
 
+
 // Table view datasource methods
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -168,6 +169,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("You have selected \(indexPath.row) row in \(indexPath.section) section")
 }
 
+
 // Swipe action
 func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     
@@ -211,6 +213,8 @@ func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->
     return 60
 }
 }
+
+
 
 
 
