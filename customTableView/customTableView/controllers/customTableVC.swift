@@ -12,46 +12,53 @@ class CustomTableVC: UIViewController {
     
     @IBOutlet weak var userListTableView: UITableView!
     
-    @IBAction func goBack(_ sender: Any) {
-//        jumpWithNavigation()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = "First VC"
+        
     }
 }
 
-// datasource methods
-extension CustomTableVC: UITableViewDataSource {
+// datasource and delegates methods
+extension CustomTableVC: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 15
     }
-                            //without dequeuing
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let myCell = UITableViewCell()
-//        myCell.textLabel?.text = "This is row number \(indexPath.row)"
-//        return myCell
-//    }
-                            // with dequeuing
-    
+    // with reusablecell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let myCell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell", for: indexPath)
+        
         //set text
-        myCell.textLabel?.text = "This is row number \(indexPath.row)"
+        cell.textLabel?.text = "Row Number \(indexPath.row)"
         
         //set image
-        myCell.imageView?.image = UIImage(named: "Image")
+        cell.imageView?.image = UIImage(named: "Image")
         
         //set accessory type
-//        myCell.accessoryType = .disclosureIndicator
-        myCell.accessoryType = .detailDisclosureButton
-        myCell.detailTextLabel?.text = "This is something detail text This is something detail textThis is something detail textThis is something detail textThis is something detail text"
-        return myCell
+        cell.accessoryType = .detailDisclosureButton
+        
+        cell.detailTextLabel?.text = "Increase table view cell height dynamically.Increase table view cell height dynamically.Increase table view cell height dynamically.Increase table view cell height dynamically.Increase table view cell height dynamically."
+        
+        return cell
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
+    
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return tableView.estimatedRowHeight
+//    }
+
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("Index:", indexPath.section," . ", indexPath.row)
+    }
+    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Header"
@@ -60,24 +67,57 @@ extension CustomTableVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return "Footer"
     }
-}
-
-// delegate methods
-extension CustomTableVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.estimatedRowHeight
-    }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        print("Index:", indexPath.section," . ", indexPath.row)
-    }
-}
-
-// jump with navigation
-extension CustomTableVC {
+    //Jump with navigation
     func jumpWithNavigation() {
         let tableVC = storyboard?.instantiateViewController(withIdentifier: "customTableVCNext") as! customTableVCNext
         
         navigationController?.pushViewController(tableVC, animated: true)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    @IBAction func goBack(_ sender: Any) {
+//        jumpWithNavigation()
+//    }
+
+
+
+
+
+
+//without reusablecell
+
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let myCell = UITableViewCell()
+//        myCell.textLabel?.text = "This is row number \(indexPath.row)"
+//        return myCell
+//    }
