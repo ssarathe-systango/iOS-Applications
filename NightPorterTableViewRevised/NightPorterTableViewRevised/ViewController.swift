@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var taskTableview: UITableView!
-    
     @IBOutlet weak var taskTF: UITextField!
     
     // Dark mode action

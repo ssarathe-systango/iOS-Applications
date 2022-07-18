@@ -9,14 +9,16 @@ import UIKit
 
 class CustomTableVC: UIViewController {
     
-    
     @IBOutlet weak var userListTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "First VC"
         
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        jumpWithNavigation()
     }
 }
 
@@ -36,13 +38,19 @@ extension CustomTableVC: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = "Row Number \(indexPath.row)"
         
         //set image
-        cell.imageView?.image = UIImage(named: "Image")
+//        cell.imageView?.image = UIImage(named: "")
         
         //set accessory type
-        cell.accessoryType = .detailDisclosureButton
+//        cell.accessoryType = .detailDisclosureButton
         
-        cell.detailTextLabel?.text = "Increase table view cell height dynamically.Increase table view cell height dynamically.Increase table view cell height dynamically.Increase table view cell height dynamically.Increase table view cell height dynamically."
-        
+                
+        if indexPath.row % 2 == 0 {
+            
+            cell.detailTextLabel?.text = "Increase table view cell height dynamically.Increase table view cell height dynamically.Increase table view cell height dynamically.Increase table view cell height dynamically.Increase table view cell height dynamically."
+        } else {
+            
+            cell.detailTextLabel?.text = "Increase table view cell"
+        }
         return cell
     }
     
@@ -52,6 +60,7 @@ extension CustomTableVC: UITableViewDataSource, UITableViewDelegate {
     
 //    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return tableView.estimatedRowHeight
+    
 //    }
 
     
@@ -71,8 +80,9 @@ extension CustomTableVC: UITableViewDataSource, UITableViewDelegate {
     //Jump with navigation
     func jumpWithNavigation() {
         let tableVC = storyboard?.instantiateViewController(withIdentifier: "customTableVCNext") as! customTableVCNext
-        
+        tableVC.obj = self
         navigationController?.pushViewController(tableVC, animated: true)
+//        present(tableVC, animated: true, completion: nil)
     }
 }
 
@@ -104,9 +114,7 @@ extension CustomTableVC: UITableViewDataSource, UITableViewDelegate {
 
 
 
-//    @IBAction func goBack(_ sender: Any) {
-//        jumpWithNavigation()
-//    }
+
 
 
 

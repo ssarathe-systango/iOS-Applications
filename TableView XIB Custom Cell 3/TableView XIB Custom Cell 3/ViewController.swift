@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewObj.dequeueReusableCell(withIdentifier: "MyTableCell", for: indexPath) as! TableCell
         cell.imageObj.image = UIImage(named: fruitsImages[indexPath.row])
-        cell.labelObj.text = fruitsImages[indexPath.row]
+        cell.labelObj.text = fruits[indexPath.row]
         return cell
     }
     
@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //register XIB
         tableViewObj.register(UINib(nibName: "MyTableCell", bundle: nil), forCellReuseIdentifier: "MyTableCell")
     }
 }
