@@ -14,25 +14,32 @@ class ViewController: UIViewController {
     var performingMath = false;
     var operation = 0;
     
+    //MARK: Outlet
     @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    // MARK: Actions
+    
+    // action of numeric values buttons
     @IBAction func numbers(_ sender: UIButton) {
         if performingMath == true {
-            // o/p :- single value like:- 1 or 2 or 3 or 4
+            print("Performing math True!")
+            // o/p :- single value like:- 1 or 2 or 3 etc...
             label.text = String(sender.tag - 1)
             numberOnScreen = Double(label.text!)!
             performingMath = false
         } else {
+            print("Performing math False!")
             // o/p :- string concatinate :- 12345 or 56789
             label.text = label.text! + String(sender.tag - 1)
             numberOnScreen = Double(label.text!)!
         }
     }
     
+    // action for performing operations buttons
     @IBAction func Calculate(_ sender: UIButton) {
         if label.text != "" && sender.tag != 11 && sender.tag != 16 {
             
@@ -54,7 +61,7 @@ class ViewController: UIViewController {
                 label.text = "+"
             }
             
-            //operation store the tag value, according to user press the button ex : + = 15, * = 13 etc.
+            // operation store the tag value, according to user press the button ex : + = 15, * = 13 etc.
             operation = sender.tag
             performingMath = true
             
