@@ -26,7 +26,6 @@ class CustomTableVC: UIViewController {
         
         alert.addTextField { (textField) in
             textField.placeholder = "Title"
-            textField.textColor = UIColor.red
         }
         
         alert.addTextField { textField in
@@ -43,8 +42,8 @@ class CustomTableVC: UIViewController {
             print(subTitle ?? "")
            
             if title == "" || subTitle == "" {
-                    print("Please add content!")
-                }
+                print("Please add more content!!!")
+            }
             
             else {
                 let data = DataModel(title: title, description: subTitle)
