@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol DataPass {
+protocol DataPass: AnyObject {
     func dataPassing(name: String, address: String, city: String)
 }
 
@@ -18,7 +18,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var txtCity: UITextField!
     
     // create delegate of protocol
-    var delegate: DataPass!
+    weak var delegate: DataPass!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,21 +27,20 @@ class SecondViewController: UIViewController {
     //MARK: Action
     @IBAction func saveBtn(_ sender: Any) {
         
-        if txtName.text == "" {
-            alert()
-        }
-        else if txtAddress.text == "" {
-            alert()
-        }
-        else if txtCity.text == "" {
-            alert()
-        }
-        else {
-            delegate.dataPassing(name: txtName.text ?? "", address: txtAddress.text ?? "", city: txtCity.text ?? "")
-        }
-        txtName.text = ""
-        txtAddress.text = ""
-        txtCity.text = ""
+        guard let name = txtName.text,
+              !name.isEmpty,
+              let address = txtAddress.text,
+              !address.isEmpty,
+              let city = txtCity.text,
+              !city.isEmpty else {
+                  alert()
+                  return
+              }
+        
+        delegate.dataPassing(name: name, address: address, city: city)
+        txtName.text = nil // Do this instead of using this txtName.text = ""
+        txtAddress.text = nil
+        txtCity.text = nil
     }
     
     //MARK: Alert
