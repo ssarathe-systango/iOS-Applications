@@ -48,7 +48,6 @@ class CustomTableVC: UIViewController {
             else {
                 let data = DataModel(title: title, description: subTitle)
                 self.dataArray.append(data)
-                
                 self.CustomTableVC.reloadData()
             }
         }

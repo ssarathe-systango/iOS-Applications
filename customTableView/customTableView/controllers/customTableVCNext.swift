@@ -6,12 +6,11 @@
 //
 
 import UIKit
-
 class customTableVCNext: UIViewController {
 
     // object created of CustomTableVC
     weak var obj: CustomTableVC?
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Second VC"
@@ -19,8 +18,7 @@ class customTableVCNext: UIViewController {
     
     
     @IBAction func buttonAction(_ sender: Any) {
-        obj?.title = "Title Changed!!!"
-        
+        obj?.title = "Title Changed"
     }
     
     

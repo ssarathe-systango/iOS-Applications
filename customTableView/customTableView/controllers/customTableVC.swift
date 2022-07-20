@@ -14,7 +14,6 @@ class CustomTableVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "First VC"
-        
     }
     
     @IBAction func goBack(_ sender: Any) {
