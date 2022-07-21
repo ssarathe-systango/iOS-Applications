@@ -20,6 +20,7 @@
 		01584AD42889027900E651B1 /* GiftCardFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01584AD32889027900E651B1 /* GiftCardFunctions.swift */; };
 		01A8F74628891E3F00480F73 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A8F74528891E3F00480F73 /* CollectionCell.swift */; };
 		01A8F74A28892AF300480F73 /* GiftViewControllerNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A8F74928892AF300480F73 /* GiftViewControllerNext.swift */; };
+		01A8F74C2889978400480F73 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A8F74B2889978400480F73 /* HeaderCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		01584AD32889027900E651B1 /* GiftCardFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardFunctions.swift; sourceTree = "<group>"; };
 		01A8F74528891E3F00480F73 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		01A8F74928892AF300480F73 /* GiftViewControllerNext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftViewControllerNext.swift; sourceTree = "<group>"; };
+		01A8F74B2889978400480F73 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				01584ACF2889020500E651B1 /* GiftViewController.swift */,
 				01A8F74528891E3F00480F73 /* CollectionCell.swift */,
 				01A8F74928892AF300480F73 /* GiftViewControllerNext.swift */,
+				01A8F74B2889978400480F73 /* HeaderCollectionReusableView.swift */,
 			);
 			path = GiftViewController;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01584AB42888FECE00E651B1 /* ViewController.swift in Sources */,
+				01A8F74C2889978400480F73 /* HeaderCollectionReusableView.swift in Sources */,
 				01584AB02888FECE00E651B1 /* AppDelegate.swift in Sources */,
 				01584AB22888FECE00E651B1 /* SceneDelegate.swift in Sources */,
 				01A8F74628891E3F00480F73 /* CollectionCell.swift in Sources */,

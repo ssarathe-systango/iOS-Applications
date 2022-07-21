@@ -22,13 +22,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lSZ-Ab-qBX">
                                     <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="GiftCardCell" id="D7L-BW-If4" customClass="CollectionCell" customModule="WiredBrainCoffee" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="60" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="d94-rl-lBu">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -50,6 +50,27 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sectionHeader" id="Isn-0w-Oyv" customClass="HeaderCollectionReusableView" customModule="WiredBrainCoffee" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIe-NW-lDg">
+                                            <rect key="frame" x="8" y="8" width="398" height="34"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="fIe-NW-lDg" firstAttribute="trailing" secondItem="Isn-0w-Oyv" secondAttribute="trailingMargin" id="2XJ-iI-Rfa"/>
+                                        <constraint firstItem="fIe-NW-lDg" firstAttribute="top" secondItem="Isn-0w-Oyv" secondAttribute="topMargin" id="ZFT-k7-jU9"/>
+                                        <constraint firstItem="fIe-NW-lDg" firstAttribute="leading" secondItem="Isn-0w-Oyv" secondAttribute="leadingMargin" id="r7a-Lj-5C8"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="fIe-NW-lDg" secondAttribute="bottom" id="tq7-18-wq8"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="headerLabel" destination="fIe-NW-lDg" id="14D-x6-Pq3"/>
+                                    </connections>
+                                </collectionReusableView>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wb0-KW-aVs">
                                 <rect key="frame" x="152" y="821" width="114" height="31"/>

@@ -38,7 +38,6 @@ extension GiftViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GiftCardCell", for: indexPath) as! CollectionCell
         cell.image.image = UIImage(named: images[indexPath.row])
         return cell
@@ -61,6 +60,16 @@ extension GiftViewController: UICollectionViewDataSource, UICollectionViewDelega
 //        return CGSize(width: width, height: height)
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "sectionHeader", for: indexPath) as! HeaderCollectionReusableView
+        view.setup(count: images.count)
+        return view
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 50)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
@@ -78,4 +87,5 @@ extension GiftViewController: UICollectionViewDataSource, UICollectionViewDelega
         move.obj = self
         navigationController?.pushViewController(move, animated: true)
     }
+    
 }
