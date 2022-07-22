@@ -15,58 +15,14 @@ class ViewController: UIViewController {
     var operation = 0;
     
     //MARK: Outlet
+    
     @IBOutlet weak var label: UILabel!
     
-    // Operation Buttons Corner Style
-    @IBOutlet weak var cornerRadius1: UIButton!
-    @IBOutlet weak var backCornerRadius: UIButton!
-    @IBOutlet weak var modulusCornerRadius: UIButton!
-    @IBOutlet weak var cornerRadius2: UIButton!
-    @IBOutlet weak var cornerRadius3: UIButton!
-    @IBOutlet weak var cornerRadius4: UIButton!
-    @IBOutlet weak var cornerRadius5: UIButton!
-    @IBOutlet weak var cornerRadius6: UIButton!
-    @IBOutlet weak var pointCornerRadius: UIButton!
-    
-    @IBOutlet weak var cornerRadius7: UIButton!
-    
-    // Numbers Buttons Corner Style
-    @IBOutlet weak var number1: UIButton!
-    @IBOutlet weak var number2: UIButton!
-    @IBOutlet weak var number3: UIButton!
-    @IBOutlet weak var number4: UIButton!
-    @IBOutlet weak var number5: UIButton!
-    @IBOutlet weak var number6: UIButton!
-    @IBOutlet weak var number7: UIButton!
-    @IBOutlet weak var number8: UIButton!
-    @IBOutlet weak var number9: UIButton!
-    
-    
+    @IBOutlet var cornerStyleOfButtons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        cornerRadius1.layer.cornerRadius = 37
-        backCornerRadius.layer.cornerRadius = 37
-        modulusCornerRadius.layer.cornerRadius = 37
-        cornerRadius2.layer.cornerRadius = 37
-        cornerRadius3.layer.cornerRadius = 37
-        cornerRadius4.layer.cornerRadius = 37
-        cornerRadius5.layer.cornerRadius = 37
-        cornerRadius6.layer.cornerRadius = 37
-        pointCornerRadius.layer.cornerRadius = 37
-        cornerRadius7.layer.cornerRadius = 37
-        
-        number1.layer.cornerRadius = 37
-        number2.layer.cornerRadius = 37
-        number3.layer.cornerRadius = 37
-        number4.layer.cornerRadius = 37
-        number5.layer.cornerRadius = 37
-        number6.layer.cornerRadius = 37
-        number7.layer.cornerRadius = 37
-        number8.layer.cornerRadius = 37
-        number9.layer.cornerRadius = 37
-        
+        cornerStyleOfButtons.forEach{ $0.layer.cornerRadius = 37 }
     }
     
 //  MARK: Action of numeric values
@@ -121,10 +77,8 @@ class ViewController: UIViewController {
                 label.text = "."
             }
             
-//          operation store the tag value, according to user press the button ex : + = 15, * = 13 etc.
             operation = sender.tag
             performingMath = true
-            
         }
         
         else if sender.tag == 16 {
