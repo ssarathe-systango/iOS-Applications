@@ -66,7 +66,9 @@ class ViewController: UIViewController {
             }
             else if sender.tag == 17
             {
-                label.text = nil
+                var newString: String = label.text ?? ""
+                newString.removeLast()
+                label.text = newString
             }
             else if sender.tag == 18
             {
@@ -99,7 +101,7 @@ class ViewController: UIViewController {
                 label.text = String(previousNumber * numberOnScreen)
             }
             else if operation == 19 {
-                
+             
             }
         }
         
