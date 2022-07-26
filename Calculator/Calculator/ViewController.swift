@@ -98,7 +98,7 @@ class ViewController: UIViewController {
                 label.text = String(previousNumber + numberOnScreen)
             }
             else if operation == 18 {
-                label.text = String(previousNumber * numberOnScreen)
+                label.text = String(previousNumber * (numberOnScreen / 100))
             }
             else if operation == 19 {
              
