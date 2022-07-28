@@ -15,6 +15,7 @@
 		01643EB12890D17D00B1E8C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01643EAF2890D17D00B1E8C8 /* LaunchScreen.storyboard */; };
 		01643EB92890D1AB00B1E8C8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01643EB82890D1AB00B1E8C8 /* DataService.swift */; };
 		01643EBB2890D93B00B1E8C8 /* DataServicePractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01643EBA2890D93B00B1E8C8 /* DataServicePractice.swift */; };
+		0168B46B28921FBD0099C9B6 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0168B46A28921FBD0099C9B6 /* Gist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		01643EB22890D17D00B1E8C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01643EB82890D1AB00B1E8C8 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		01643EBA2890D93B00B1E8C8 /* DataServicePractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServicePractice.swift; sourceTree = "<group>"; };
+		0168B46A28921FBD0099C9B6 /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				01643EB22890D17D00B1E8C8 /* Info.plist */,
 				01643EB82890D1AB00B1E8C8 /* DataService.swift */,
 				01643EBA2890D93B00B1E8C8 /* DataServicePractice.swift */,
+				0168B46A28921FBD0099C9B6 /* Gist.swift */,
 			);
 			path = RESThub;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				01643EA92890D17B00B1E8C8 /* ViewController.swift in Sources */,
 				01643EBB2890D93B00B1E8C8 /* DataServicePractice.swift in Sources */,
+				0168B46B28921FBD0099C9B6 /* Gist.swift in Sources */,
 				01643EA52890D17B00B1E8C8 /* AppDelegate.swift in Sources */,
 				01643EA72890D17B00B1E8C8 /* SceneDelegate.swift in Sources */,
 				01643EB92890D1AB00B1E8C8 /* DataService.swift in Sources */,

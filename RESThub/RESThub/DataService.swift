@@ -9,11 +9,13 @@ import Foundation
 
 //MARK: CREATE CLASS DATASERVICE
 class DataService {
+    
     static let shared = DataService()
     fileprivate let baseURLString = "https://api.github.com"
 
     //MARK: FETCHGISTS() FUNCTION
-    func fetchGists(completion: @escaping (Result <Any, Error>) -> Void) {
+    func fetchGists(completion: @escaping (Result <[Gist], Error>) -> Void) {
+        
         
         // MARK: THIS IS WAY FOR CREATE URL USING "URLcomponents()"
         var componentURL = URLComponents()
@@ -33,6 +35,7 @@ class DataService {
                 print("API status: \(httpResponse.statusCode)")
             }
             
+            //guard let work on the And operation. (Both condition should be true)
             guard let validData = data, error == nil else {
 //                print("API Error: \(error!.localizedDescription)")
                 completion(.failure(error!))
@@ -41,8 +44,9 @@ class DataService {
             
             //MARK: serialization of data in json format.
             do {
-                let json = try JSONSerialization.jsonObject(with: validData, options: [])
-                completion(.success(json))
+//                let json = try JSONSerialization.jsonObject(with: validData, options: [])
+                let gists = try JSONDecoder().decode([Gist].self, from: validData)
+                completion(.success(gists))
             } catch let serializationError {
 //                print(serializationError.localizedDescription)
                 completion(.failure(serializationError))
@@ -52,3 +56,8 @@ class DataService {
         
     }
 }
+
+
+
+
+
