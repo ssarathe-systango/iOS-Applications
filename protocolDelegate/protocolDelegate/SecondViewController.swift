@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 protocol DataPass: AnyObject {
     func dataPassing(name: String, address: String, city: String)
 }

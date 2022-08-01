@@ -17,3 +17,9 @@ struct Gist: Codable {
         case id, isPublic = "public"
     }
 }
+
+// CodingKey :- Coding key is used for give the new alias name of key. (for renaming the key ex :- we have take isPublic instead of using public) Ex :-
+
+//    enum CodingKeys: String, CodingKey {
+//    case id, isPublic = "public"
+//    }

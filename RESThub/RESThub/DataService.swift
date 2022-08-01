@@ -53,7 +53,6 @@ class DataService {
             }
             
         }.resume() // for resuming suspended state of tasks.
-        
     }
 }
 
@@ -61,3 +60,10 @@ class DataService {
 
 
 
+
+//        POST REQUEST
+
+//        var request = URLRequest(url: validURl)
+//        request.httpMethod = ""
+//        request.httpBody = Data()
+//        URLSession.shared.dataTask(with: <#T##URLRequest#>, completionHandler: <#T##(Data?, URLResponse?, Error?) -> Void#>)
