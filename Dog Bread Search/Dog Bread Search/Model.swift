@@ -10,3 +10,9 @@ import Foundation
 struct DogImages: Codable {
     var message: [String]
 }
+
+
+struct DogBreads : Codable {
+    let message : [String : [String]]?
+    let status : String?
+}
