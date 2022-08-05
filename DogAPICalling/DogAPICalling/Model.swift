@@ -10,3 +10,8 @@ import Foundation
 struct DogImages: Codable {
     var message: [String]
 }
+
+struct DogBreadList: Codable {
+    let message: [String : [String]]?
+    let test: String?
+}

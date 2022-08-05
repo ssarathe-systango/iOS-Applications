@@ -11,11 +11,12 @@ class DataService {
     
     static let shared = DataService()
     
+    //MARK: FETCH DOG IMAGES.
     func fetchDogs(searchText: String, completion: @escaping (Result <DogImages, Error>) -> Void) {
         
-        let url = URL(string: searchText == "" ? "https://dog.ceo/api/breed/hound/images" : "https://dog.ceo/api/breed/\(searchText.lowercased())/images")
+        let path = searchText.isEmpty ? "https://dog.ceo/api/breed/hound/images" : "https://dog.ceo/api/breed/\(searchText.lowercased())/images"
         
-        print(searchText == "" ? "https://dog.ceo/api/breed/hound/images" : "https://dog.ceo/api/breed/\(searchText.lowercased())/images")
+        let url = URL(string: path)
         
         guard let validURL = url else {
             print("Error...")
@@ -43,7 +44,7 @@ class DataService {
         
     }
     
-
+    //MARK: GET ALL BREAD LIST OF DOGS.
     func getBreadList(completion: @escaping (Result <DogBreads, Error>) -> Void ) {
         
         let url = URL(string: "https://dog.ceo/api/breeds/list/all")

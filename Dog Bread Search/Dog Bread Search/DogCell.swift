@@ -7,26 +7,33 @@
 
 import UIKit
 
+//MARK: PROTOCOL DELEGATION
 protocol DogCellDelegate: AnyObject {
     func onClickImage(image: UIImageView)
 }
 
+//MARK: CELL
 class DogCell: UICollectionViewCell {
 
+    //MARK: CELL IDENTIFIER
     static let identifier = "DogCell"
           
+    //MARK: IMAGE VIEW OUTLET
     @IBOutlet weak var imageView: UIImageView!
     
+    //MARK: DELEGATE OF PROTOCOL DogCellDegelate
     weak var delegate: DogCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
+    //MARK: ACTION FOR ON CLICK IMAGE BUTTON.
     @IBAction func onclickImage(_ sender: Any) {
         delegate?.onClickImage(image: imageView)
     }
     
+    //MARK: CONFIGURE FUNCTION
     func configure(imageURL: String) {
         imageView.contentMode = .scaleAspectFill
         guard let url = URL(string: imageURL) else {
@@ -35,6 +42,7 @@ class DogCell: UICollectionViewCell {
         downloadImage(from: url)
     }
     
+    //MARK: DOWNLOADING IMAGE
     func downloadImage(from url: URL) {
         print("Download Started")
         getData(from: url) { data, response, error in
@@ -47,10 +55,10 @@ class DogCell: UICollectionViewCell {
             DispatchQueue.main.async() { [weak self] in
                 self?.imageView.image = UIImage(data: data)
             }
-            
         }
     }
     
+    //MARK:
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }

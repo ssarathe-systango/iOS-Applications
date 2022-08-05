@@ -9,12 +9,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //MARK: ARRAYS
+    // bread list array.
     var breadList = [String]()
     
+    // filtered bread array
     var filteredBread = [String]()
     
+    // dogs images array.
     var dogs = [String]()
     
+    //MARK: OUTLETS
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
@@ -28,27 +33,31 @@ class ViewController: UIViewController {
         getAllBreadList()
     }
     
-    //MARK: Actions
+    //MARK: ACTIONS.
+    // search button action.
     @IBAction func onClick(_ sender: Any) {
         tableView.isHidden = true
         apiCallToGetImages(searchText: textField.text ?? "")
     }
     
+    //MARK: TEXT FIELD EDITING CHANGED ACTION
     @IBAction func textFieldEditingChanged(_ sender: Any) {
         tableView.isHidden = !(textField.text?.count ?? 0 > 1)
         filteredBread = breadList.filter { $0.localizedCaseInsensitiveContains(textField.text ?? "")  }
-        print(filteredBread)
+//        print(filteredBread)
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
+    //MARK: TEXT FIELD DID BEGIN ACTION.
     @IBAction func textFieldDidBegin(_ sender: Any) {
         tableView.isHidden = !(textField.text?.count ?? 0 > 1)
     }
 }
 
+//MARK: SETUP TABLE VIEW
 extension ViewController {
     func setupTableView() {
         tableView.dataSource = self
@@ -56,6 +65,7 @@ extension ViewController {
     }
 }
 
+//MARK: SETUP COLLECTION VIEW
 extension ViewController {
     func setupCollectionView() {
         collectionView.delegate = self
@@ -65,11 +75,14 @@ extension ViewController {
         
         let flowLayout = UICollectionViewFlowLayout()
         collectionView.collectionViewLayout = flowLayout
+        
     }
 }
 
+//MARK: API CALLING TO GET IMAGES.
 extension ViewController {
     func apiCallToGetImages(searchText: String) {
+        //MARK: API CALLING
         DataService.shared.fetchDogs(searchText: searchText) { result in
             switch result {
                 case .success(let dogImages):
@@ -94,6 +107,24 @@ extension ViewController {
     }
 }
 
+//MARK: API CALLING TO GET ALL BREADS LIST.
+extension ViewController {
+    func getAllBreadList() {
+        DataService.shared.getBreadList { result in
+            switch result {
+            case .success(let data):
+                data.message?.keys.forEach({ bread in
+                    self.breadList.append(bread)
+                })
+            
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+//MARK: COLLECTION VIEW FOR DISPLAY IMAGES.
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -113,6 +144,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
 }
 
+//MARK: DISPLAY IMAGE USING ONCLICK.
 extension ViewController: DogCellDelegate {
     func onClickImage(image: UIImageView) {
         let newImageView = UIImageView(image: image.image)
@@ -120,8 +152,8 @@ extension ViewController: DogCellDelegate {
         newImageView.backgroundColor = .black
         newImageView.contentMode = .scaleAspectFit
         
-        navigationController?.navigationBar.alpha = 0
-        tabBarController?.tabBar.alpha = 0
+//        navigationController?.navigationBar.alpha = 0
+//        tabBarController?.tabBar.alpha = 0
 
 //        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
 //        newImageView.addGestureRecognizer(dismissTap)
@@ -138,6 +170,7 @@ extension ViewController: DogCellDelegate {
 //    }
 }
 
+//MARK: TABLE VIEW TO SHOW SUGGESTIONS.
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -158,23 +191,5 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         apiCallToGetImages(searchText: filteredBread[indexPath.row])
         textField.text = filteredBread[indexPath.row]
         tableView.isHidden = true
-    }
-}
-
-//MARK: get all bread list.
-
-extension ViewController {
-    func getAllBreadList() {
-        DataService.shared.getBreadList { result in
-            switch result {
-            case .success(let data):
-                data.message?.keys.forEach({ bread in
-                    self.breadList.append(bread)
-                })
-            
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
     }
 }

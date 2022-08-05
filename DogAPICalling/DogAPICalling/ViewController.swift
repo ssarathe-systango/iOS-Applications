@@ -9,18 +9,51 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var collectionView: UICollectionView!
+    var breadList = [String]()
+    
+    var filteredBreadList = [String]()
     
     var dogs = [String]()
     
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.isHidden = true
         setupCollectionView()
-        apiCallToGetImages()
+        apiCallToGetImages(searchText: "")
+        setupTableView()
+        getAllBreadList()
     }
+    
     @IBAction func onClickSearch(_ sender: Any) {
-        apiCallToGetImages()
+        
+    }
+    
+    //MARK: TEXT FIELD EDITING CHANGED
+    @IBAction func textEditingChanged(_ sender: Any) {
+        tableView.isHidden = !(textField.text?.count ?? 0 > 1)
+
+        filteredBreadList = breadList.filter { $0.localizedCaseInsensitiveContains(textField.text ?? "") }
+
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
+    //MARK: TEXT FIELD EDITING BEGIN
+    @IBAction func textFieldEditingBegin(_ sender: Any) {
+        tableView.isHidden = !(textField.text?.count ?? 0 > 1)
+    }
+}
+
+//MARK: TABLE VIEW SETUP
+extension ViewController {
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 
@@ -29,6 +62,7 @@ extension ViewController {
     func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         collectionView.register(UINib(nibName: DogCell.identifier, bundle: nil), forCellWithReuseIdentifier: DogCell.identifier)
 
         let flowLayout = UICollectionViewFlowLayout()
@@ -36,17 +70,16 @@ extension ViewController {
     }
 }
 
-
+//MARK: API CALL TO GET IMAGES
 extension ViewController {
-    func apiCallToGetImages() {
-        DataService.shared.fetchDogs(searchText: textField.text ?? ""){ (result) in
+    func apiCallToGetImages(searchText: String) {
+        DataService.shared.fetchDogs(searchText: searchText){ (result) in
             
             switch result {
                 case .success(let dogImages):
-                for dog in dogImages.message {
-                        print("\(dog)")
+                    for _ in dogImages.message {
+//                        print("\(dog)")
                     }
-                    
                     self.dogs.removeAll()
                     
                     let count = dogImages.message.count > 10 ? 10 : dogImages.message.count
@@ -64,6 +97,23 @@ extension ViewController {
     }
 }
 
+//MARK: GET ALL BREAD LIST
+extension ViewController {
+    func getAllBreadList() {
+        DataService.shared.fetchDogsBreadList { result in
+            switch result {
+            case .success(let dogbreads):
+                dogbreads.message?.keys.forEach({ bread in
+                    self.breadList.append(bread)
+                })
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+//MARK: COLLECTION VIEW
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -83,5 +133,30 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         return CGSize(width: (collectionWidth/2) - 20, height: (collectionWidth/2) - 20)
     }
 
+}
+
+//MARK: TABLE VIEW FOR SEARCH SUGGESTIONS.
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredBreadList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
+        cell.breadsLabel.text = filteredBreadList[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      return 50
+    }
+    
+    //MARK: API CALL ON ROW SELECTING
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        apiCallToGetImages(searchText: filteredBreadList[indexPath.row])
+        textField.text = filteredBreadList[indexPath.row]
+        tableView.isHidden = true
+    }
 }
 
