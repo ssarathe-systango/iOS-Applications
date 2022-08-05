@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
     //MARK: ARRAYS
+    
     // bread list array.
     var breadList = [String]()
     
@@ -33,18 +34,11 @@ class ViewController: UIViewController {
         getAllBreadList()
     }
     
-    //MARK: ACTIONS.
-    // search button action.
-    @IBAction func onClick(_ sender: Any) {
-        tableView.isHidden = true
-        apiCallToGetImages(searchText: textField.text ?? "")
-    }
-    
     //MARK: TEXT FIELD EDITING CHANGED ACTION
     @IBAction func textFieldEditingChanged(_ sender: Any) {
+        tableView.isHidden = true
         tableView.isHidden = !(textField.text?.count ?? 0 > 1)
         filteredBread = breadList.filter { $0.localizedCaseInsensitiveContains(textField.text ?? "")  }
-//        print(filteredBread)
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -124,6 +118,13 @@ extension ViewController {
     }
 }
 
+extension ViewControllerNext {
+    func jumpWithNavigation() {
+        let vcNext = storyboard?.instantiateViewController(withIdentifier: "ViewControllerNext") as! ViewControllerNext
+        navigationController?.pushViewController(vcNext, animated: true)
+    }
+}
+
 //MARK: COLLECTION VIEW FOR DISPLAY IMAGES.
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -134,7 +135,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DogCell.identifier, for: indexPath) as! DogCell
         cell.configure(imageURL: dogs[indexPath.row])
-        cell.delegate = self
+//        cell.delegate = self
         return cell
     }
     
@@ -142,32 +143,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let collectionWidth = collectionView.bounds.width
         return CGSize(width: (collectionWidth/2) - 5, height: (collectionWidth/2) - 5)
     }
-}
-
-//MARK: DISPLAY IMAGE USING ONCLICK.
-extension ViewController: DogCellDelegate {
-    func onClickImage(image: UIImageView) {
-        let newImageView = UIImageView(image: image.image)
-        newImageView.frame = UIScreen.main.bounds
-        newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleAspectFit
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        navigationController?.navigationBar.alpha = 0
-//        tabBarController?.tabBar.alpha = 0
-
-//        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-//        newImageView.addGestureRecognizer(dismissTap)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ViewControllerNext") as! ViewControllerNext
+        vc.imageURL = dogs[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
         
-        view.addSubview(newImageView)
-        navigationController?.isNavigationBarHidden = true
-        tabBarController?.tabBar.isHidden = true
     }
-
-//    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
-//        sender.view?.removeFromSuperview()
-//        navigationController?.navigationBar.alpha = 1
-//        tabBarController?.tabBar.alpha = 1
-//    }
 }
 
 //MARK: TABLE VIEW TO SHOW SUGGESTIONS.

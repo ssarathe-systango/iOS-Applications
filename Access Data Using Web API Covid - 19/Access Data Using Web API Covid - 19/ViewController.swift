@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     //MARK: Array of country list
     var countryList = ["IND", "SA", "UK", "AUS"]
     
-    //MARK: Arrya of country name.
+    //MARK: Array of country name.
     var countryName = ["India", "South Africa", "United Kingdom", "Australia"]
     
     //MARK: OUTLETS

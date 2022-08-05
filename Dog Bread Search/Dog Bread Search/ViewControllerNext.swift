@@ -1,33 +1,25 @@
 //
-//  DogCell.swift
+//  ViewControllerNext.swift
 //  Dog Bread Search
 //
-//  Created by macmini01 on 29/07/22.
+//  Created by macmini01 on 05/08/22.
 //
 
 import UIKit
 
-//MARK: CELL
-class DogCell: UICollectionViewCell {
+class ViewControllerNext: UIViewController {
 
-    //MARK: CELL IDENTIFIER
-    static let identifier = "DogCell"
-          
-    //MARK: IMAGE VIEW OUTLET
+    
     @IBOutlet weak var imageView: UIImageView!
+    var imageURL = ""
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        downloadImage(from: URL(string: imageURL)!)
+
     }
-    
-    //MARK: CONFIGURE FUNCTION
-    func configure(imageURL: String) {
-        imageView.contentMode = .scaleAspectFill
-        guard let url = URL(string: imageURL) else {
-            return
-        }
-        downloadImage(from: url)
-    }
+
     
     //MARK: DOWNLOADING IMAGE
     func downloadImage(from url: URL) {
@@ -49,5 +41,5 @@ class DogCell: UICollectionViewCell {
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
-
 }
+

@@ -19,24 +19,12 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8ea-HC-XJt">
                         <rect key="frame" x="10" y="10" width="238" height="30"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFA-Js-SPF">
-                        <rect key="frame" x="10" y="10" width="238" height="30"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title=""/>
-                        <connections>
-                            <action selector="onclickImage:" destination="gTV-IL-0wX" eventType="touchUpInside" id="KwO-tS-TaY"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="JFA-Js-SPF" firstAttribute="bottom" secondItem="8ea-HC-XJt" secondAttribute="bottom" id="LOi-zH-Lki"/>
-                <constraint firstItem="JFA-Js-SPF" firstAttribute="top" secondItem="8ea-HC-XJt" secondAttribute="top" id="OUW-WY-ad6"/>
-                <constraint firstItem="JFA-Js-SPF" firstAttribute="leading" secondItem="8ea-HC-XJt" secondAttribute="leading" id="bFo-0X-jVp"/>
                 <constraint firstItem="8ea-HC-XJt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="gch-36-Bbj"/>
                 <constraint firstItem="8ea-HC-XJt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="ixj-Di-4rM"/>
-                <constraint firstItem="JFA-Js-SPF" firstAttribute="trailing" secondItem="8ea-HC-XJt" secondAttribute="trailing" id="nW7-4g-3ZI"/>
                 <constraint firstAttribute="trailing" secondItem="8ea-HC-XJt" secondAttribute="trailing" constant="10" id="uB0-IX-PUn"/>
                 <constraint firstAttribute="bottom" secondItem="8ea-HC-XJt" secondAttribute="bottom" constant="10" id="zTp-Ht-5db"/>
             </constraints>
