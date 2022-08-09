@@ -21,7 +21,7 @@ class CountryController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationItem.title = "Select Country"
+
         self.tableView.separatorStyle = .none
         
         configuration()
