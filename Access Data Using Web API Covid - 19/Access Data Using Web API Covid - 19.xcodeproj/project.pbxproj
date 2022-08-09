@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01479639289CE6BF007E4465 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01479638289CE6BF007E4465 /* TableViewCell.swift */; };
+		015D849B28A1255200AAC470 /* CountryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D849A28A1255100AAC470 /* CountryController.swift */; };
+		015D849E28A1293400AAC470 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015D849D28A1293400AAC470 /* Country.swift */; };
 		01FB2FD0289B653600D06FF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB2FCF289B653600D06FF3 /* AppDelegate.swift */; };
 		01FB2FD2289B653600D06FF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB2FD1289B653600D06FF3 /* SceneDelegate.swift */; };
 		01FB2FD4289B653600D06FF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB2FD3289B653600D06FF3 /* ViewController.swift */; };
@@ -19,7 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01479638289CE6BF007E4465 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		015D849A28A1255100AAC470 /* CountryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryController.swift; sourceTree = "<group>"; };
+		015D849D28A1293400AAC470 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		01FB2FCC289B653600D06FF3 /* Access Data Using Web API Covid - 19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Access Data Using Web API Covid - 19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FB2FCF289B653600D06FF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01FB2FD1289B653600D06FF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +48,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01572AC228A25E4D00372284 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				01FB2FD3289B653600D06FF3 /* ViewController.swift */,
+				015D849A28A1255100AAC470 /* CountryController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		015D849C28A1292300AAC470 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				01FB2FE3289B68EA00D06FF3 /* Model.swift */,
+				015D849D28A1293400AAC470 /* Country.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		01FB2FC3289B653600D06FF3 = {
 			isa = PBXGroup;
 			children = (
@@ -67,15 +87,14 @@
 		01FB2FCE289B653600D06FF3 /* Access Data Using Web API Covid - 19 */ = {
 			isa = PBXGroup;
 			children = (
+				01572AC228A25E4D00372284 /* Controllers */,
+				015D849C28A1292300AAC470 /* Models */,
 				01FB2FCF289B653600D06FF3 /* AppDelegate.swift */,
 				01FB2FD1289B653600D06FF3 /* SceneDelegate.swift */,
-				01FB2FD3289B653600D06FF3 /* ViewController.swift */,
 				01FB2FD5289B653700D06FF3 /* Main.storyboard */,
 				01FB2FD8289B653900D06FF3 /* Assets.xcassets */,
 				01FB2FDA289B653900D06FF3 /* LaunchScreen.storyboard */,
 				01FB2FDD289B653900D06FF3 /* Info.plist */,
-				01FB2FE3289B68EA00D06FF3 /* Model.swift */,
-				01479638289CE6BF007E4465 /* TableViewCell.swift */,
 			);
 			path = "Access Data Using Web API Covid - 19";
 			sourceTree = "<group>";
@@ -212,7 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01479639289CE6BF007E4465 /* TableViewCell.swift in Sources */,
+				015D849E28A1293400AAC470 /* Country.swift in Sources */,
+				015D849B28A1255200AAC470 /* CountryController.swift in Sources */,
 				01FB2FD4289B653600D06FF3 /* ViewController.swift in Sources */,
 				01FB2FD0289B653600D06FF3 /* AppDelegate.swift in Sources */,
 				01FB2FD2289B653600D06FF3 /* SceneDelegate.swift in Sources */,

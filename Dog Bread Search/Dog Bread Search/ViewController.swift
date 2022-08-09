@@ -38,6 +38,7 @@ class ViewController: UIViewController {
     @IBAction func textFieldEditingChanged(_ sender: Any) {
         tableView.isHidden = true
         tableView.isHidden = !(textField.text?.count ?? 0 > 1)
+        
         filteredBread = breadList.filter { $0.localizedCaseInsensitiveContains(textField.text ?? "")  }
         
         DispatchQueue.main.async {
@@ -115,13 +116,6 @@ extension ViewController {
                 print(error.localizedDescription)
             }
         }
-    }
-}
-
-extension ViewControllerNext {
-    func jumpWithNavigation() {
-        let vcNext = storyboard?.instantiateViewController(withIdentifier: "ViewControllerNext") as! ViewControllerNext
-        navigationController?.pushViewController(vcNext, animated: true)
     }
 }
 

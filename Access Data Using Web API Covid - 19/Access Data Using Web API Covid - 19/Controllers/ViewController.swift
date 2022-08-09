@@ -9,42 +9,30 @@ import UIKit
 import DropDown
 
 class ViewController: UIViewController {
-
-    let dropDown = DropDown()
-    
-    //MARK: Array of country list
-    var countryList = ["IND", "SA", "UK", "AUS"]
-    
-    //MARK: Array of country name.
-    var countryName = ["India", "South Africa", "United Kingdom", "Australia"]
     
     //MARK: OUTLETS
     @IBOutlet weak var totalConfirmedLabel: UILabel!
     @IBOutlet weak var totalDeathsLabel: UILabel!
     @IBOutlet weak var newConfirmedLabel: UILabel!
     @IBOutlet weak var showCountryName: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btnCountry: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.isHidden = true
         displayStatus(labeltext: "")
         showCountryName.text = nil
+        btnCountry.addTarget(self, action: #selector(tapForCountry), for: .touchUpInside)
     }
-    
-    //MARK: Action
-    @IBAction func selectCountries(_ sender: Any) {
-        tableView.isHidden = false
-    }
-    
-    //MARK: API CALLING
+}
+
+extension ViewController {
+    //MARK: API CALLING FOR DISPLAY COVID CASES
     func displayStatus(labeltext: String) {
         
         let path = labeltext.isEmpty ? "https://api.covid19api.com/live/country" : "https://api.covid19api.com/live/country/\(labeltext)"
         
+        print(path)
         
         guard let url = URL(string: path) else {
             return
@@ -73,37 +61,33 @@ class ViewController: UIViewController {
                 print("\(error)")
             }
             
-            guard let finalStatus = currentStatus else {
-                return
-            }
-            
             //MARK: SET LABEL TEXT
             DispatchQueue.main.async {
-                self.totalConfirmedLabel.text = "\(finalStatus.first?.Confirmed ?? 0)"
-                self.totalDeathsLabel.text = "\(finalStatus.first?.Deaths ?? 0)"
-                self.newConfirmedLabel.text = "\(finalStatus.first?.Active ?? 0)"
+                self.totalConfirmedLabel.text = "\(currentStatus?.first?.Confirmed ?? 0)"
+                self.totalDeathsLabel.text = "\(currentStatus?.first?.Deaths ?? 0)"
+                self.newConfirmedLabel.text = "\(currentStatus?.first?.Active ?? 0)"
             }
         }).resume()
     }
 }
 
-//MARK: Table View Methods
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countryList.count
+//MARK: NAVIGATION CONTROLLER
+extension ViewController {
+    @objc func tapForCountry() {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        
+        guard let controller = story.instantiateViewController(withIdentifier: "CountryController") as? CountryController else {
+            return
+        }
+        controller.delegate = self
+        self.present(controller, animated: true)
     }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        cell.countryLabel?.text = countryList[indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        displayStatus(labeltext: countryList[indexPath.row])
-        showCountryName.text = "\(countryName[indexPath.row]) Covid Cases"
-        tableView.isHidden = true
+}
+
+extension ViewController: CountryControllerDelegate {
+    func sendData(country: Country) {
+        displayStatus(labeltext: country.countryCode ?? "")
+        showCountryName.text = country.name
     }
 }
 
