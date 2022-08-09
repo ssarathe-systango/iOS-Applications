@@ -32,7 +32,7 @@ extension ViewController {
         
         let path = labeltext.isEmpty ? "https://api.covid19api.com/live/country" : "https://api.covid19api.com/live/country/\(labeltext)"
         
-        print(path)
+//        print(path)
         
         guard let url = URL(string: path) else {
             return
