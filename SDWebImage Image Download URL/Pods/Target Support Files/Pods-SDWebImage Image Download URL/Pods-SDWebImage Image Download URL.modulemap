@@ -1,0 +1,6 @@
+framework module Pods_SDWebImage_Image_Download_URL {
+  umbrella header "Pods-SDWebImage Image Download URL-umbrella.h"
+
+  export *
+  module * { export * }
+}

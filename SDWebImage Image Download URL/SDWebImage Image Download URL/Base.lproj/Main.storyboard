@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SDWebImage_Image_Download_URL" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetch Image From URL(SDWebImage)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgI-T1-8uR">
+                                <rect key="frame" x="20" y="67" width="374" height="43"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="t92-m0-w7Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ju-cI-Srv">
+                                <rect key="frame" x="20" y="158" width="32" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xgZ-dW-bPU">
+                                <rect key="frame" x="74" y="151" width="328" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9L-gD-faY">
+                                <rect key="frame" x="143" y="246" width="127" height="41"/>
+                                <color key="backgroundColor" red="0.62443205690000003" green="0.81025861160000001" blue="0.81402619350000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="99E-3n-1vu"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Download"/>
+                                <connections>
+                                    <action selector="downloadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dU3-iA-q8S"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="emptyImage" translatesAutoresizingMaskIntoConstraints="NO" id="Pk8-vF-7XQ">
+                                <rect key="frame" x="20" y="295" width="374" height="267"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pk8-vF-7XQ" firstAttribute="top" secondItem="F9L-gD-faY" secondAttribute="bottom" constant="8" id="1xA-e0-Ho1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xgZ-dW-bPU" secondAttribute="trailing" constant="12" id="8Bq-Mw-mz1"/>
+                            <constraint firstItem="YgI-T1-8uR" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ime-A1-qej"/>
+                            <constraint firstItem="F9L-gD-faY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="143" id="JRw-f8-GGQ"/>
+                            <constraint firstItem="xgZ-dW-bPU" firstAttribute="leading" secondItem="5Ju-cI-Srv" secondAttribute="trailing" constant="22" id="JZv-Q9-oJv"/>
+                            <constraint firstItem="YgI-T1-8uR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23" id="aIj-Tb-OVd"/>
+                            <constraint firstItem="5Ju-cI-Srv" firstAttribute="top" secondItem="YgI-T1-8uR" secondAttribute="bottom" constant="48" id="aXl-bm-Qbd"/>
+                            <constraint firstItem="YgI-T1-8uR" firstAttribute="leading" secondItem="5Ju-cI-Srv" secondAttribute="leading" id="bQV-Zm-DgX"/>
+                            <constraint firstItem="5Ju-cI-Srv" firstAttribute="leading" secondItem="Pk8-vF-7XQ" secondAttribute="leading" id="hAz-m0-TfP"/>
+                            <constraint firstItem="YgI-T1-8uR" firstAttribute="centerX" secondItem="F9L-gD-faY" secondAttribute="centerX" id="j3S-aZ-udw"/>
+                            <constraint firstItem="YgI-T1-8uR" firstAttribute="trailing" secondItem="Pk8-vF-7XQ" secondAttribute="trailing" id="pSZ-OX-8SN"/>
+                            <constraint firstItem="YgI-T1-8uR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="paS-t5-aBw"/>
+                            <constraint firstItem="F9L-gD-faY" firstAttribute="top" secondItem="xgZ-dW-bPU" secondAttribute="bottom" constant="61" id="qP9-J4-5jq"/>
+                            <constraint firstItem="xgZ-dW-bPU" firstAttribute="top" secondItem="YgI-T1-8uR" secondAttribute="bottom" constant="41" id="xoe-GF-842"/>
+                            <constraint firstItem="5Ju-cI-Srv" firstAttribute="centerY" secondItem="xgZ-dW-bPU" secondAttribute="centerY" id="zEb-tY-NTj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Pk8-vF-7XQ" secondAttribute="bottom" constant="300" id="zsS-xp-Gl4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myImageView" destination="Pk8-vF-7XQ" id="kUJ-xB-oFy"/>
+                        <outlet property="urlTextField" destination="xgZ-dW-bPU" id="sa0-pi-bZ4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="31.473214285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="emptyImage" width="225" height="225"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
